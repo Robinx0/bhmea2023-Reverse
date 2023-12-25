@@ -16,6 +16,7 @@ def why(param):
         why_memo[param] = result
         return result
 
+# Memoization dictionary to store computed values for the process_variable function
 def process_variable(i):
     result = ""
     local_4c_memo = {}
@@ -30,11 +31,12 @@ def process_variable(i):
         lVar2 = why(local_4c * local_4c)
         result_char = chr((bVar1 ^ lVar2) % 128)
 
-        # Filter out the undesired pattern "#EE" and keep alphanumeric characters
+        
         if result_char.isprintable():
             result += result_char
 
-    return result
+        # Filter out the undesired pattern "#EE"
+    return result.replace('#', '').replace('E', '')
 
 local_48 = 0xfefa22e2a9e54d41
 local_40 = 0x35d1a4dc22cdb471
